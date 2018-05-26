@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Auth</title>
+	<link rel="stylesheet" href="/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/css/style.css" type="text/css" />
+	<link href="/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/bootstrap-social.css" type="text/css" />
+</head>
+
+<body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation">
+						<a href="/">Dashboard</a>
+					</li>
+					<% if(!user) { %>
+						<li role="presentation">
+							<a href="/users/login">Login</a>
+						</li>
+						<li role="presentation">
+							<a href="/users/register">Register</a>
+						</li>
+						<% } else { %>
+							<li role="presentation">
+								<a href="/secret">Secret Page</a>
+							</li>
+							<li role="presentation">
+								<a href="/users/logout">Logout</a>
+							</li>
+							<% } %>
+				</ul>
+			</nav>
+			<h3 class="text-muted">Auth</h3>
+		</div>
+
+
+		<div class="row">
+			<div class="container">
+				<% if(error && error.length > 0) { %>
+					<div class="alert alert-danger" role="alert">
+						<%= error %>
+					</div>
+					<% } if(success && success.length > 0) { %>
+						<div class="alert alert-success" role="alert">
+							<%= success %>
+						</div>
+						<% } %>
+			</div>
